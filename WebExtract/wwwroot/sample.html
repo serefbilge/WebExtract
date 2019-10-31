@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div asp-authorize asp-roles="Admin" asp-policy="Seniors" class="panel panel-default">
+        <div class="panel-heading">Admin Seniors Only</div>
+        <div class="panel-body">
+            Only users who have both the Admin role AND are age 65 or older can see this section.
+        </div>
+    </div>
+</body>
+</html>

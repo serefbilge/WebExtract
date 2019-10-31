@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<div asp-authorize asp-roles="test-role-2" class="panel panel-default">
+    <div class="panel-heading">test-role-2 only</div>
+    <div class="panel-body">
+        .....
+    </div>
+</div>
