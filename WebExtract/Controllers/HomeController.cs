@@ -33,12 +33,12 @@ namespace WebExtract.Controllers
 
             IList<HtmlNode> nodes = doc.QuerySelectorAll("[asp-authorize]");
             
-            if (nodes == null || !nodes.Any()) return new List<string>();
+            if (nodes == null || !nodes.Any(x => x.Attributes.Any(y => y.Name == "asp-roles"))) return new List<string>();
 
-            var aNode = nodes[0];
-            var attrs = aNode.Attributes;
+            var authorizeNodes = nodes.Where(x => x.Attributes.Any(y => y.Name == "asp-roles"));
+            var authorizeAttrs = authorizeNodes.SelectMany(x => x.Attributes.Where(y => y.Name == "asp-roles"));
 
-            return attrs.Where(x => x.Name == "asp-roles").Select(x => x.Value).ToList();
+            return authorizeAttrs.Select(x => x.Value).ToList();
         }
 
         public IActionResult Index()
